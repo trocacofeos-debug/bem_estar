@@ -1,0 +1,18 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "aulas",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "diaSemana",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "horarioInicio",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
+}

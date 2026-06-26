@@ -1,0 +1,131 @@
+rules_version = '2';
+
+service cloud.firestore {
+match /databases/{database}/documents {
+
+// =====================================================
+// HELPERS
+// =====================================================
+
+function isLogged() {
+  return request.auth != null;
+}
+
+function userDoc() {
+  return get(
+    /databases/$(database)/documents/usuarios/$(request.auth.uid)
+  );
+}
+
+function userExists() {
+  return isLogged()
+    && exists(
+      /databases/$(database)/documents/usuarios/$(request.auth.uid)
+    );
+}
+
+function isAdmin() {
+  return userExists()
+    && userDoc().data.role == "admin";
+}
+
+// =====================================================
+// USUÁRIOS
+// =====================================================
+
+match /usuarios/{userId} {
+
+  allow create: if isLogged();
+
+  allow read: if isLogged()
+    && (
+      request.auth.uid == userId
+      || isAdmin()
+    );
+
+  allow update: if isLogged()
+    && (
+      request.auth.uid == userId
+      || isAdmin()
+    );
+
+  allow delete: if isAdmin();
+}
+
+// =====================================================
+// AULAS
+// =====================================================
+
+match /aulas/{aulaId} {
+
+  allow read: if isLogged();
+
+  allow create, delete: if isAdmin();
+
+  allow update: if
+
+    // Admin pode tudo
+    isAdmin()
+
+    ||
+
+    // Aluno só pode alterar vagasOcupadas
+    (
+      isLogged()
+
+      && request.resource.data.diff(resource.data)
+          .affectedKeys()
+          .hasOnly([
+            'vagasOcupadas'
+          ])
+    );
+}
+
+// =====================================================
+// AGENDAMENTOS
+// =====================================================
+
+match /agendamentos/{agendamentoId} {
+
+  // Criar apenas para si mesmo
+  allow create: if isLogged()
+    && request.resource.data.alunoId == request.auth.uid;
+
+  // Ler próprios agendamentos ou admin
+  allow read: if isLogged()
+    && (
+      resource.data.alunoId == request.auth.uid
+      || isAdmin()
+    );
+
+  // Atualizar próprio agendamento ou admin
+  allow update: if isLogged()
+    && (
+      isAdmin()
+      || resource.data.alunoId == request.auth.uid
+    );
+
+  allow delete: if isAdmin();
+}
+
+// =====================================================
+// HORÁRIOS MODELO
+// =====================================================
+
+match /horarios_modelo/{id} {
+  allow read: if isLogged();
+  allow write: if isAdmin();
+}
+
+// =====================================================
+// AULA EXPERIMENTAL
+// =====================================================
+
+match /experimental/{id} {
+  allow create: if isLogged();
+  allow read: if isLogged();
+  allow update, delete: if isAdmin();
+}
+
+}
+}
