@@ -233,7 +233,11 @@ packages:
     source: sdk
     version: "0.0.0"
   http:
+<<<<<<< HEAD
     dependency: "direct main"
+=======
+    dependency: transitive
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
     description:
       name: http
       sha256: "87721a4a50b19c7f1d49001e51409bddc46303966ce89a65af4f4e6004896412"
@@ -477,6 +481,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+<<<<<<< HEAD
   url_launcher:
     dependency: "direct main"
     description:
@@ -541,6 +546,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.5"
+=======
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
   vector_math:
     dependency: transitive
     description:
@@ -590,5 +597,10 @@ packages:
     source: hosted
     version: "3.1.3"
 sdks:
+<<<<<<< HEAD
   dart: ">=3.12.0 <4.0.0"
   flutter: ">=3.44.0"
+=======
+  dart: ">=3.11.0 <4.0.0"
+  flutter: ">=3.27.0"
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b

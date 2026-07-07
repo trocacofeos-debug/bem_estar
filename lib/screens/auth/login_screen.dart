@@ -14,11 +14,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+<<<<<<< HEAD
   final TextEditingController emailController =
       TextEditingController();
 
   final TextEditingController senhaController =
       TextEditingController();
+=======
+  final emailController = TextEditingController();
+  final senhaController = TextEditingController();
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
 
   @override
   void dispose() {
@@ -41,21 +46,32 @@ class _LoginScreenState extends State<LoginScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
+<<<<<<< HEAD
             auth.erro ?? 'Erro ao realizar login',
           ),
           backgroundColor: Colors.red,
+=======
+            auth.erro ?? "Erro ao realizar login",
+          ),
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
         ),
       );
       return;
     }
 
+<<<<<<< HEAD
     // Aguarda o AuthProvider carregar o usuário do Firestore
     await Future.delayed(
       const Duration(milliseconds: 1000),
+=======
+    await Future.delayed(
+      const Duration(milliseconds: 500),
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
     );
 
     if (!mounted) return;
 
+<<<<<<< HEAD
     debugPrint('========================');
     debugPrint('LOGIN REALIZADO');
     debugPrint('USUARIO: ${auth.usuario?.nome}');
@@ -91,6 +107,19 @@ class _LoginScreenState extends State<LoginScreen> {
       '/aluno',
       (route) => false,
     );
+=======
+    if (auth.isAdmin) {
+      Navigator.pushReplacementNamed(
+        context,
+        AppRoutes.dashboardAdmin,
+      );
+    } else {
+      Navigator.pushReplacementNamed(
+        context,
+        AppRoutes.homeAluno,
+      );
+    }
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
   }
 
   @override
@@ -99,10 +128,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
       backgroundColor: const Color(0xFFF5F6FA),
+<<<<<<< HEAD
+=======
+
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(24),
+<<<<<<< HEAD
             child: ConstrainedBox(
               constraints: const BoxConstraints(
                 maxWidth: 420,
@@ -116,17 +150,48 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
 
                   const SizedBox(height: 20),
+=======
+
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 420),
+
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+
+                  // =====================
+                  // LOGO
+                  // =====================
+
+                  Image.asset(
+                    'assets/images/logo.png',
+                    height: 110,
+                  ),
+
+                  const SizedBox(height: 16),
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
 
                   Text(
                     AppConstants.appName,
                     style: const TextStyle(
+<<<<<<< HEAD
                       fontSize: 28,
+=======
+                      fontSize: 26,
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
                       fontWeight: FontWeight.bold,
                     ),
                   ),
 
                   const SizedBox(height: 32),
 
+<<<<<<< HEAD
+=======
+                  // =====================
+                  // FORM LOGIN
+                  // =====================
+
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
                   Container(
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
@@ -142,6 +207,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     child: Column(
                       children: [
+<<<<<<< HEAD
                         TextField(
                           controller: emailController,
                           keyboardType:
@@ -157,6 +223,20 @@ class _LoginScreenState extends State<LoginScreen> {
                             border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.circular(12),
+=======
+
+                        // EMAIL
+                        TextField(
+                          controller: emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            labelText: 'E-mail',
+                            prefixIcon: const Icon(Icons.email_outlined),
+                            filled: true,
+                            fillColor: const Color(0xFFF2F3F7),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
                               borderSide: BorderSide.none,
                             ),
                           ),
@@ -164,11 +244,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
                         const SizedBox(height: 14),
 
+<<<<<<< HEAD
+=======
+                        // SENHA
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
                         TextField(
                           controller: senhaController,
                           obscureText: true,
                           decoration: InputDecoration(
                             labelText: 'Senha',
+<<<<<<< HEAD
                             prefixIcon: const Icon(
                               Icons.lock_outline,
                             ),
@@ -178,6 +263,13 @@ class _LoginScreenState extends State<LoginScreen> {
                             border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.circular(12),
+=======
+                            prefixIcon: const Icon(Icons.lock_outline),
+                            filled: true,
+                            fillColor: const Color(0xFFF2F3F7),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
                               borderSide: BorderSide.none,
                             ),
                           ),
@@ -185,6 +277,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                         const SizedBox(height: 20),
 
+<<<<<<< HEAD
                         SizedBox(
                           width: double.infinity,
                           height: 50,
@@ -198,13 +291,30 @@ class _LoginScreenState extends State<LoginScreen> {
                                     height: 22,
                                     child:
                                         CircularProgressIndicator(
+=======
+                        // BOTÃO LOGIN
+                        SizedBox(
+                          width: double.infinity,
+                          height: 48,
+                          child: ElevatedButton(
+                            onPressed: auth.carregandoAcao ? null : _login,
+                            child: auth.carregandoAcao
+                                ? const SizedBox(
+                                    width: 20,
+                                    height: 20,
+                                    child: CircularProgressIndicator(
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
                                       strokeWidth: 2,
                                       color: Colors.white,
                                     ),
                                   )
+<<<<<<< HEAD
                                 : const Text(
                                     AppStrings.entrar,
                                   ),
+=======
+                                : const Text(AppStrings.entrar),
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
                           ),
                         ),
                       ],
@@ -213,6 +323,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   const SizedBox(height: 20),
 
+<<<<<<< HEAD
+=======
+                  // =====================
+                  // ESQUECI SENHA (AGORA PRIMEIRO)
+                  // =====================
+
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
                   TextButton(
                     onPressed: () {
                       Navigator.pushNamed(
@@ -222,12 +339,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     child: const Text(
                       AppStrings.esqueceuSenha,
+<<<<<<< HEAD
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
 
+=======
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                  ),
+
+                  // =====================
+                  // CRIAR CONTA
+                  // =====================
+
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
                   TextButton(
                     onPressed: () {
                       Navigator.pushNamed(
@@ -237,14 +365,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     child: const Text(
                       AppStrings.criarConta,
+<<<<<<< HEAD
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                       ),
+=======
+                      style: TextStyle(fontWeight: FontWeight.w600),
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
                     ),
                   ),
 
                   const SizedBox(height: 8),
 
+<<<<<<< HEAD
                   Card(
                     elevation: 2,
                     shape: RoundedRectangleBorder(
@@ -254,6 +387,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: InkWell(
                       borderRadius:
                           BorderRadius.circular(14),
+=======
+                  // =====================
+                  // AULA EXPERIMENTAL (ULTIMO)
+                  // =====================
+
+                  Card(
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(14),
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
                       onTap: () {
                         Navigator.pushNamed(
                           context,
@@ -262,8 +408,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: Container(
                         width: double.infinity,
+<<<<<<< HEAD
                         padding:
                             const EdgeInsets.all(16),
+=======
+                        padding: const EdgeInsets.all(16),
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
                         child: const Row(
                           children: [
                             Icon(
@@ -274,14 +424,22 @@ class _LoginScreenState extends State<LoginScreen> {
                             SizedBox(width: 12),
                             Expanded(
                               child: Column(
+<<<<<<< HEAD
                                 crossAxisAlignment:
                                     CrossAxisAlignment.start,
+=======
+                                crossAxisAlignment: CrossAxisAlignment.start,
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
                                 children: [
                                   Text(
                                     'Aula Experimental Grátis',
                                     style: TextStyle(
+<<<<<<< HEAD
                                       fontWeight:
                                           FontWeight.bold,
+=======
+                                      fontWeight: FontWeight.bold,
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
                                       fontSize: 15,
                                     ),
                                   ),

@@ -22,11 +22,16 @@
       }
     }
   },
+<<<<<<< HEAD
+=======
+
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
   "firestore": {
     "database": "(default)",
     "location": "southamerica-east1",
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
+<<<<<<< HEAD
   },
   "functions": [
     {
@@ -43,3 +48,7 @@
     }
   ]
 }
+=======
+  }
+}
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b

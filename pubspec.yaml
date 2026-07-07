@@ -31,6 +31,7 @@ dependencies:
   qr_flutter: ^4.1.0
 
   # =========================
+<<<<<<< HEAD
   # API / HTTP
   # =========================
   http: ^1.5.0
@@ -41,6 +42,8 @@ dependencies:
   url_launcher: ^6.3.2
 
   # =========================
+=======
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
   # NOTIFICAÇÕES LOCAIS
   # =========================
   flutter_local_notifications: ^17.2.2
@@ -58,11 +61,18 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
 
 flutter:
+<<<<<<< HEAD
+=======
+
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
   uses-material-design: true
 
   assets:
     - assets/images/logo.png
+<<<<<<< HEAD
     - assets/images/icon.png
+=======
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
 
 # ==============================
 # CONFIG DO ÍCONE DO APP
@@ -70,4 +80,8 @@ flutter:
 flutter_launcher_icons:
   android: true
   ios: true
+<<<<<<< HEAD
+=======
+
+>>>>>>> 12bfda8db290d757ea89f820ea84b8dab268410b
   image_path: "assets/images/icon.png"
