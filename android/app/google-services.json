@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1082269849127",
+    "project_id": "bem-estar-13a2d",
+    "storage_bucket": "bem-estar-13a2d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082269849127:android:1832fcc340d783ac38e002",
+        "android_client_info": {
+          "package_name": "com.example.bem_estar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0nDrkj4TNEK5ZBxwYj74kkZVfbvZiSf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
