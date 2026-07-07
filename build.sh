@@ -2,20 +2,30 @@
 
 set -e
 
-echo "Instalando Flutter..."
+echo "=== Instalando Flutter ==="
 
-git clone https://github.com/flutter/flutter.git -b stable --depth 1
+git clone https://github.com/flutter/flutter.git --depth 1 -b stable flutter
 
-export PATH="$PATH:`pwd`/flutter/bin"
+export PATH="$PATH:$(pwd)/flutter/bin"
+
+echo "=== Versão Flutter ==="
 
 flutter --version
 
-echo "Instalando dependências..."
+
+echo "=== Habilitando Web ==="
+
+flutter config --enable-web
+
+
+echo "=== Dependências ==="
 
 flutter pub get
 
-echo "Gerando Flutter Web..."
 
-flutter build web --release
+echo "=== Build Web ==="
 
-echo "Build finalizado"
+flutter build web --release --no-tree-shake-icons
+
+
+echo "=== Finalizado ==="
